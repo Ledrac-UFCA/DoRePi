@@ -1,0 +1,133 @@
+# DoRePi C Version
+
+![C](https://img.shields.io/badge/C-%23007ACC?style=for-the-badge&logo=c&logoColor=white)![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-A22846.svg?style=for-the-badge&logo=Raspberry-Pi&logoColor=white)![CMAKE](https://img.shields.io/badge/CMake-064F8C.svg?style=for-the-badge&logo=CMake&logoColor=white)![License](https://img.shields.io/github/license/Ledrac-UFCA/DoRePi?style=for-the-badge)
+
+
+
+- [DoRePi C Version](#dorepi-c-version)
+  - [Automatic Setup](#automatic-setup)
+    - [Clone this Repository](#clone-this-repository)
+  - [Manual Setup](#manual-setup)
+    - [Clone this Repository](#clone-this-repository-1)
+    - [Dependencies](#dependencies)
+      - [🐧 Pop!\_OS/Linux Mint](#-pop_oslinux-mint)
+      - [🐧 Fedora](#-fedora)
+      - [🐧 Arch Linux / CachyOS](#-arch-linux--cachyos)
+      - [🐧 NixOS](#-nixos)
+    - [Clone pico-sdk](#clone-pico-sdk)
+    - [Add pico-sdk path](#add-pico-sdk-path)
+      - [Bash and ZSH](#bash-and-zsh)
+  - [Config Visual Studio Code](#config-visual-studio-code)
+  - [Build](#build)
+
+## Automatic Setup
+
+### Clone this Repository
+
+```bash
+git clone -b final-version_c https://github.com/Ledrac-UFCA/DoRePi.git
+```
+
+Use [setup.sh](./setup.sh):
+
+```bash
+chmod +x setup.sh
+./setup.sh
+```
+
+## Manual Setup
+
+### Clone this Repository
+
+```bash
+git clone -b final-version_c https://github.com/Ledrac-UFCA/DoRePi.git
+```
+
+### Dependencies
+
+#### 🐧 Pop!_OS/Linux Mint
+
+```bash
+sudo apt update
+sudo apt install \
+    cmake \
+    gcc-arm-none-eabi \
+    libnewlib-arm-none-eabi \
+    libstdc++-arm-none-eabi-newlib \
+    make \
+    python3 \
+    git
+```
+
+#### 🐧 Fedora
+
+```bash
+sudo dnf install \
+    cmake \
+    gcc-arm-none-eabi \
+    newlib-arm-none-eabi \
+    libstdc++-arm-none-eabi \
+    make \
+    python3 \
+    git
+```
+
+#### 🐧 Arch Linux / CachyOS
+
+```bash
+sudo pacman -S --needed \
+    cmake \
+    arm-none-eabi-gcc \
+    arm-none-eabi-newlib \
+    make \
+    python \
+    git
+```
+
+#### 🐧 NixOS
+
+```bash
+nix-env -iA nixpkgs.cmake \
+            nixpkgs.gcc-arm-embedded \
+            nixpkgs.newlib \
+            nixpkgs.gnumake \
+            nixpkgs.python3 \
+            nixpkgs.git
+```
+
+### Clone [pico-sdk](https://github.com/raspberrypi/pico-sdk)
+
+```bash
+git clone -b master https://github.com/raspberrypi/pico-sdk.git --recurse-submodules
+```
+
+### Add pico-sdk path
+
+#### Bash and ZSH
+
+In your .bashrc add this line at the final of file:
+
+```
+export PICO_SDK_PATH=PATH-TO-YOUR-PICO-SDK-DIR
+```
+
+## Config [Visual Studio Code](https://code.visualstudio.com/)
+
+post install code, install [Raspberry Pi Pico extension](https://marketplace.visualstudio.com/items?itemName=raspberry-pi.raspberry-pi-pico).
+
+## Build
+
+Use [build.sh](./build.sh):
+```bash
+chmod +x build.sh
+./build.sh
+```
+
+Or
+
+```bash
+mkdir build
+cd build
+cmake ..
+make
+```
