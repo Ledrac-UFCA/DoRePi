@@ -24,13 +24,13 @@
 
 ### Clone this Repository
 
-```bash
+```shell
 git clone -b final-version_c https://github.com/Ledrac-UFCA/DoRePi.git
 ```
 
 Use [setup.sh](./setup.sh):
 
-```bash
+```shell
 chmod +x setup.sh
 ./setup.sh
 ```
@@ -39,7 +39,7 @@ chmod +x setup.sh
 
 ### Clone this Repository
 
-```bash
+```shell
 git clone -b final-version_c https://github.com/Ledrac-UFCA/DoRePi.git
 ```
 
@@ -47,7 +47,7 @@ git clone -b final-version_c https://github.com/Ledrac-UFCA/DoRePi.git
 
 #### 🐧 Pop!_OS/Linux Mint
 
-```bash
+```shell
 sudo apt update
 sudo apt install \
     cmake \
@@ -61,7 +61,7 @@ sudo apt install \
 
 #### 🐧 Fedora
 
-```bash
+```shell
 sudo dnf install \
     cmake \
     gcc-arm-none-eabi \
@@ -74,7 +74,7 @@ sudo dnf install \
 
 #### 🐧 Arch Linux / CachyOS
 
-```bash
+```shell
 sudo pacman -S --needed \
     cmake \
     arm-none-eabi-gcc \
@@ -86,7 +86,7 @@ sudo pacman -S --needed \
 
 #### 🐧 NixOS
 
-```bash
+```shell
 nix-env -iA nixpkgs.cmake \
             nixpkgs.gcc-arm-embedded \
             nixpkgs.newlib \
@@ -97,7 +97,7 @@ nix-env -iA nixpkgs.cmake \
 
 ### Clone [pico-sdk](https://github.com/raspberrypi/pico-sdk)
 
-```bash
+```shell
 git clone -b master https://github.com/raspberrypi/pico-sdk.git --recurse-submodules
 ```
 
@@ -107,7 +107,7 @@ git clone -b master https://github.com/raspberrypi/pico-sdk.git --recurse-submod
 
 In your .bashrc add this line at the final of file:
 
-```
+```bash
 export PICO_SDK_PATH=PATH-TO-YOUR-PICO-SDK-DIR
 ```
 
@@ -118,14 +118,14 @@ post install code, install [Raspberry Pi Pico extension](https://marketplace.vis
 ## Build
 
 Use [build.sh](./build.sh):
-```bash
+```shell
 chmod +x build.sh
 ./build.sh
 ```
 
 Or
 
-```bash
+```shell
 mkdir build
 cd build
 cmake ..
