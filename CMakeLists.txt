@@ -16,11 +16,20 @@ set(CMAKE_C_EXTENSIONS OFF)
 
 pico_sdk_init()
 
+include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
+
 add_executable(DoRePi
 	src/main.c
+    src/buttons.c
+    src/display.c
+    src/notes.c
+    src/sound.c
 )
 
-target_link_libraries(DoRePi pico_stdlib)
+target_link_libraries(DoRePi
+    pico_stdlib
+    hardware_pwm
+)
 
 target_compile_options(DoRePi PRIVATE
     -Wall
@@ -28,3 +37,5 @@ target_compile_options(DoRePi PRIVATE
     -Werror
     -O2
 )
+
+pico_add_extra_outputs(DoRePi)

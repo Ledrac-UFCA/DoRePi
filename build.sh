@@ -9,8 +9,8 @@ fi
 
 mkdir -p build
 cd build
-cmake ..
-make
+cmake -G Ninja ..
+ninja
 cd ..
 
 echo "DoRePi.bin Generated"

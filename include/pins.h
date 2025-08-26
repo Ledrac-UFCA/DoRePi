@@ -1,0 +1,15 @@
+#ifndef PINS_H
+#define PINS_H
+
+#define BTN_GPIO02_PHYS04 2
+#define BTN_GPIO03_PHYS05 3
+#define BTN_GPIO04_PHYS06 4
+#define BTN_GPIO05_PHYS07 5
+#define BTN_GPIO06_PHYS09 6
+#define BTN_GPIO07_PHYS10 7
+#define BTN_GPIO08_PHYS11 8
+#define BTN_GPIO09_PHYS12 9
+
+#define BUZZER_PIN 15
+
+#endif

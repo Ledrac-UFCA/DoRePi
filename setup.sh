@@ -18,8 +18,9 @@ case "$DISTRO" in
             gcc-arm-none-eabi \
             libnewlib-arm-none-eabi \
             libstdc++-arm-none-eabi-newlib \
-            make \
             python3 \
+            python3-pip \
+            ninja \
             git
     ;;
     fedora)
@@ -28,8 +29,9 @@ case "$DISTRO" in
             gcc-arm-none-eabi \
             newlib-arm-none-eabi \
             libstdc++-arm-none-eabi \
-            make \
             python3 \
+            python3-pip \
+            ninja \
             git
     ;;
     arch|cachyos)
@@ -37,8 +39,10 @@ case "$DISTRO" in
             cmake \
             arm-none-eabi-gcc \
             arm-none-eabi-newlib \
-            make \
+            arm-none-eabi-gcc-libs \
             python \
+            python-pip \
+            ninja \
             git
     ;;
     nixos)
@@ -47,17 +51,27 @@ case "$DISTRO" in
                     nixpkgs.newlib \
                     nixpkgs.gnumake \
                     nixpkgs.python3 \
+                    nixpkgs.python3Packages.pip \
+                    nixpkgs.ninja \
                     nixpkgs.git
     ;;
 esac
 
 if [ -z "$PICO_SDK_PATH" ]; then
-    if [ ! -d "./pico-sdk" ]; then
-        git clone -b master https://github.com/raspberrypi/pico-sdk.git --recurse-submodules ~/pico-sdk
+    if [ ! -d "$HOME/pico-sdk" ]; then
+        git clone -b master https://github.com/raspberrypi/pico-sdk.git --recurse-submodules "$HOME/pico-sdk"
         echo "pico-sdk cloned to $PICO_SDK_DIR"
     else
         echo "pico-sdk already exists at $PICO_SDK_DIR"
     fi
-    export PICO_SDK_PATH=$PICO_SDK_DIR
-    echo "PICO_SDK_PATH set to $PICO_SDK_PATH"
+    echo "export PICO_SDK_PATH=$PICO_SDK_DIR" >> "$HOME/.bashrc"
+    source "$HOME/.bashrc"
+fi
+
+if [ -d "$HOME/pico-sdk" ]; then
+    PROJECT_DIR=$(pwd)
+    cd "$HOME/pico-sdk"
+    git pull
+    git submodule update --init
+    cd "$PROJECT_DIR"
 fi
